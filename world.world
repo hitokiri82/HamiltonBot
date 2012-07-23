@@ -58,8 +58,8 @@ colors ["red" "blue"]
 # camera parameters
 image [160 120] #resolution
 range 5.00
-#fov 1.047196667 # 60 degrees = pi/3 radians
-fov 3.141516 # 60 degrees = pi/3 radians
+fov 1.047196667 # 60 degrees = pi/3 radians
+#fov 3.141516 # 60 degrees = pi/3 radians
 )
 
 pioneer2dx
