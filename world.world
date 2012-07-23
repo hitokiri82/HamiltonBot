@@ -1,0 +1,84 @@
+# simple.world - basic world file example
+# Authors: Richard Vaughan
+# $Id$
+
+include "/usr/local/share/stage/worlds/pioneer.inc"
+include "/usr/local/share/stage/worlds/map.inc"
+include "/usr/local/share/stage/worlds/sick.inc"
+
+# time to pause (in GUI mode) or quit (in headless mode (-g)) the simulation
+quit_time 3600 # 1 hour of simulated time
+
+paused 1
+
+resolution 0.02
+
+# configure the GUI window
+window
+(
+  size [ 635.000 666.000 ] # in pixels
+  scale 36.995   # pixels per meter
+  center [ -0.040  -0.274 ]
+  rotate [ 0  0 ]
+  			
+  show_data 1              # 1=on 0=off
+)
+
+# load an environment bitmap
+floorplan
+( 
+  color "red"
+  name "three"
+  size [16.000 16.000 0.800]
+  pose [0 0 0 0]
+  bitmap "bitmaps/3walls.png"
+  obstacle_return 1
+  blob_return 1  
+)
+
+# load an environment bitmap
+floorplan
+( 
+  color "blue"
+  name "one"
+  size [16.000 0.800 0.800]
+  pose [0 7.6 0 0]
+  bitmap "bitmaps/1wall.png"
+  obstacle_return 1
+  blob_return 1  
+)
+
+
+define eyes blobfinder
+(
+# number of colours to look for
+colors_count 2
+# which colours to look for
+colors ["red" "blue"]
+# camera parameters
+image [160 120] #resolution
+range 5.00
+#fov 1.047196667 # 60 degrees = pi/3 radians
+fov 3.141516 # 60 degrees = pi/3 radians
+)
+
+pioneer2dx
+(		  
+  # can refer to the robot by this name
+  name "r0"
+  pose [ -6.946 -6.947 0 45.000 ] 
+
+  # pioneer2dx's sonars	will be ranger:0 and the laser will be ranger:1
+  sicklaser( pose [ 0 0 0 0 ] ) 
+  
+  eyes()
+  
+ 
+  # demonstrate a plugin controller, implemented in examples/ctrl/wander.cc
+  # you probably should comment this out when using simple.cfg with Player
+  #ctrl "wander"
+
+  # report error-free position in world coordinates
+  localization "gps"
+  localization_origin [ 0 0 0 0 ]
+)
