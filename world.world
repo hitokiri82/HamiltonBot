@@ -45,7 +45,8 @@ floorplan
   pose [0 7.6 0 0]
   bitmap "bitmaps/1wall.png"
   obstacle_return 1
-  blob_return 1  
+  #blob_return 1  
+  fiducial_return 2
 )
 
 
@@ -56,7 +57,7 @@ colors_count 2
 # which colours to look for
 colors ["red" "blue"]
 # camera parameters
-image [160 120] #resolution
+image [200 200] #resolution
 range 5.00
 fov 1.047196667 # 60 degrees = pi/3 radians
 #fov 3.141516 # 60 degrees = pi/3 radians
@@ -71,7 +72,8 @@ pioneer2dx
   # pioneer2dx's sonars	will be ranger:0 and the laser will be ranger:1
   sicklaser( pose [ 0 0 0 0 ] ) 
   
-  eyes()
+  #eyes()
+  fiducial()
   
  
   # demonstrate a plugin controller, implemented in examples/ctrl/wander.cc
