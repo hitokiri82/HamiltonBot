@@ -3,6 +3,7 @@
 # $Id$
 
 include "/usr/local/share/stage/worlds/pioneer.inc"
+include "alice.inc"
 include "/usr/local/share/stage/worlds/map.inc"
 include "/usr/local/share/stage/worlds/sick.inc"
 
@@ -76,6 +77,23 @@ pioneer2dx
   fiducial()
   
  
+  # demonstrate a plugin controller, implemented in examples/ctrl/wander.cc
+  # you probably should comment this out when using simple.cfg with Player
+  #ctrl "wander"
+
+  # report error-free position in world coordinates
+  localization "gps"
+  localization_origin [ 0 0 0 0 ]
+)
+
+alice2d
+(		  
+  # can refer to the robot by this name
+  name "a0"
+  pose [ 6.946 6.947 0 45.000 ] 
+
+  fiducial()
+   
   # demonstrate a plugin controller, implemented in examples/ctrl/wander.cc
   # you probably should comment this out when using simple.cfg with Player
   #ctrl "wander"
