@@ -23,7 +23,7 @@ define ir_high sensor
   # define the size of each transducer [xsize ysize zsize] in meters
   size [0.01 0.05 0.01 ] 
   # define the range bounds [min max]
-  range [0 5.0]
+  range [0 10]
   # define the angular field of view in degrees
   fov 60
   # define the number of samples spread over the fov
@@ -42,7 +42,7 @@ define alice_sonar_front ranger
 
 define alice_sonar_high ranger
 (
-  ir( pose [ 0.5 0 -0.8 0 ] )
+  ir_high( pose [ 0.5 0 0 0 ] )
 )
 
 
@@ -52,9 +52,7 @@ define alice_base position
   drive "diff"		 	# Differential steering model.
   gui_nose 1                  	# Draw a nose on the robot so we can see which way it points
   obstacle_return 1           	# Can hit things.
-  ranger_return 0.5            	# reflects sonar beams
-  blob_return 1               	# Seen by blobfinders  
-  fiducial_return 1           	# Seen as "1" fiducial finders
+  ranger_return 1           	# reflects sonar beams
 
   localization "gps"         	  
   localization_origin [0 0 0 0] 	# Start odometry at (0, 0, 0).
