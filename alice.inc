@@ -30,6 +30,19 @@ define ir_high sensor
   samples 1
 )
 
+define wall_detector fiducial
+(
+  # fiducial properties
+  range_min 0.0
+  range_max 8.0
+  range_max_id 5.0
+  fov 3.14159
+  #ignore_zloc 0
+
+  # model properties
+  size [ 0.1 0.1 0.1 ]
+)
+
 
 define alice_sonar_front ranger
 (
@@ -91,6 +104,8 @@ define alice2d_base_front_sonar alice2d_base_no_sonar
 #  alice_sonar_front( pose [0 0 -0.03 0] )
   alice_sonar_front()
   alice_sonar_high() 
+  wall_detector( pose [0.5 0.25 0 0] )
+  wall_detector( pose [0.5 -0.25 0 0] )
 )
 
 
